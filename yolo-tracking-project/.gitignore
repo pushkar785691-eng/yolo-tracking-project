@@ -1,0 +1,21 @@
+# Model weights (auto-downloaded on first run)
+*.pt
+*.onnx
+*.engine
+
+# Outputs
+outputs/*.mp4
+outputs/*.csv
+!outputs/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS/editor junk
+.DS_Store
+.vscode/
+.idea/

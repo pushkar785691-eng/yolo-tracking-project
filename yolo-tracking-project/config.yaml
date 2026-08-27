@@ -1,0 +1,29 @@
+# Configuration for the YOLO detection + tracking + counting demo.
+# Edit line_start / line_end to match your video's resolution and the
+# spot where you want to count crossings (e.g. a doorway, a road lane).
+
+model:
+  weights: "yolov8n.pt"      # pretrained COCO weights, auto-downloaded on first run
+  tracker: "bytetrack.yaml"  # bundled with the 'ultralytics' package
+  confidence: 0.35
+  # COCO class ids to track. Common ones:
+  # 0 person, 1 bicycle, 2 car, 3 motorcycle, 5 bus, 7 truck, 14 bird, 15 cat, 16 dog
+  #
+  # NOTE: the bundled sample/sample_video.mp4 clip only contains a bird, so the
+  # default here is set to [14] so the demo works out of the box. For a real
+  # person/vehicle counting use case, point --source at your own video and
+  # change this to something like [0, 1, 2, 3, 5, 7].
+  classes: [14]
+
+counting_line:
+  # Two points (x, y) in pixel coordinates defining the virtual line.
+  # Defaults assume a 1280x720 video; a horizontal line across the middle.
+  point_a: [0, 400]
+  point_b: [1280, 400]
+  name: "entry_line"
+
+output:
+  save_video: true
+  output_path: "outputs/annotated_output.mp4"
+  draw_trails: true
+  trail_length: 30
